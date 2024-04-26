@@ -1,6 +1,6 @@
 ﻿namespace MultiplyMatrix
 {
-    class ClusterData
+    sealed internal class ClusterData
     {
         public int begin;
         public int end;
