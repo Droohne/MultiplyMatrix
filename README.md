@@ -1,1 +1,1 @@
-Three ways to multiply a matrices. Default, async and a smarter async (clusters)
+Three ways to multiply a matrices. Default (linear), task for every line*column, task for every thread.
