@@ -40,7 +40,7 @@
             return result;
         }
 
-        static async Task<int[,]> MultiplyMatrixAsync(int[,] matrix1, int[,] matrix2)
+        static int[,] MultiplyMatrixTask(int[,] matrix1, int[,] matrix2)
         {
             int rowA = matrix1.GetLength(0);
             int colA = matrix1.GetLength(1);
@@ -70,7 +70,7 @@
             return a < b ? a : b; //ISC suggested it
         }
 
-        static async Task<int[,]> MultiplyMatrixClusterAsync(int[,] matrix1, int[,] matrix2)
+        static int[,] MultiplyMatrixCluster(int[,] matrix1, int[,] matrix2)
         {
             // check if multiplycation is possible (I dont check it, beacause work with square matrices)
             int rA = matrix1.GetLength(0);
@@ -117,11 +117,11 @@
             return result;
         }
 
-        static async Task Main(string[] args)
+        static void Main(string[] args)
         {
             var watch = new System.Diagnostics.Stopwatch();
 
-            int n = 1230;
+            int n = 1000;
             int m = n; //square matrix
             int[,] matrix1 = new int[n, m];
             int[,] matrix2 = new int[n, m];
@@ -139,12 +139,12 @@
             Console.WriteLine(watch.ElapsedMilliseconds + " Non async");
 
             watch.Restart();
-            matrix4 = await MultiplyMatrixAsync(matrix1, matrix2);
+            matrix4 = MultiplyMatrixTask(matrix1, matrix2);
             watch.Stop();
             Console.WriteLine(watch.ElapsedMilliseconds + " Async");
 
             watch.Restart();
-            matrix5 = await MultiplyMatrixClusterAsync(matrix2, matrix3);
+            matrix5 = MultiplyMatrixCluster(matrix2, matrix3);
             watch.Stop();
             Console.WriteLine(watch.ElapsedMilliseconds + " Better Async");
         }
